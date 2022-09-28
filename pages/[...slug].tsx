@@ -4,8 +4,6 @@ import Head from "next/head"
 import { DrupalNode } from "next-drupal"
 
 import { drupal } from "lib/drupal"
-import { NodeArticle } from "components/node--article"
-import { NodeBasicPage } from "components/node--basic-page"
 import { Layout } from "components/layout"
 import { NodeGameReview } from "components/node--game_review"
 
