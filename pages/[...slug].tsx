@@ -23,8 +23,6 @@ export default function NodePage({ resource }: NodePageProps) {
         <title>{resource.title}</title>
         <meta name="description" content="A Next.js site powered by Drupal." />
       </Head>
-      {resource.type === "node--page" && <NodeBasicPage node={resource} />}
-      {resource.type === "node--article" && <NodeArticle node={resource} />}
       {resource.type === "node--game_review" && <NodeGameReview node={resource} />}
     </Layout>
   )
