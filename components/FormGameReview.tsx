@@ -88,15 +88,20 @@ export class FormGameReview extends React.Component<IFormProps, IFormState> {
      * @param {React.FormEvent<HTMLFormElement>} e - The form event
      * @returns {boolean} - Whether the form submission was successful or not
      */
-    private async submitForm(e: React.FormEvent<HTMLFormElement>): Promise<boolean> {
-        const target = e.target as HTMLInputElement
-
+    private async submitForm(e: React.SyntheticEvent): Promise<boolean> {
+        e.preventDefault();
+        const target = e.target as typeof e.target & {
+            title: { value: string };
+            summary: { value: string };
+            date: { value: string };
+            mvpLink: { value: string };
+        };
         const game = await drupal.createResource("node--game_review", {
             data: {
                 attributes: {
-                    title: target.elements.title.value,
+                    title: target.title.value,
                     body: {
-                        value: target.elements.summary.value,
+                        value: target.summary.value,
                     },
                 },
             },
