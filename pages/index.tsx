@@ -1,7 +1,7 @@
 import Head from "next/head"
 import { GetStaticPropsResult } from "next"
 import { DrupalNode } from "next-drupal"
-import NoSsr from "components/NoSsr";
+import NoSSR from 'react-no-ssr';
 
 import { drupal } from "lib/drupal"
 import { Layout } from "components/layout"
@@ -18,8 +18,6 @@ export default function IndexPage({ nodes }: IndexPageProps) {
   /**
  * input field keyword onchage
  */
-  const AnyNoSsr = NoSsr as any;
-
   const [search, setSearch] = useState("");
   // Does not work
   const filteredNodes = nodes.filter(
@@ -46,7 +44,7 @@ export default function IndexPage({ nodes }: IndexPageProps) {
             placeholder="Search"
             onChange={(e) => setSearch(e.target.value)}
           />
-          <AnyNoSsr>
+          <NoSSR>
             <div>
               {filteredNodes?.length ? (
                 filteredNodes.map((node) => (
@@ -59,7 +57,7 @@ export default function IndexPage({ nodes }: IndexPageProps) {
                 <p className="py-4">No content found :(</p>
               )}
             </div>
-          </AnyNoSsr>
+          </NoSSR>
         </div>
         <div className="md:basis-1/2 lg:basis-1/2 ml-9">
           <div>New game!</div>
