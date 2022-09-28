@@ -17,8 +17,6 @@ interface NodePageProps {
 
 export default function NodePage({ resource }: NodePageProps) {
   if (!resource) return null
-  console.log("ehre")
-  console.log(resource)
   return (
     <Layout>
       <Head>

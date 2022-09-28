@@ -89,11 +89,6 @@ export class FormGameReview extends React.Component<IFormProps, IFormState> {
      * @returns {boolean} - Whether the form submission was successful or not
      */
     private async submitForm(e: React.FormEvent<HTMLFormElement>): Promise<boolean> {
-        console.log(e.target.elements.title.value);
-        console.log(e.target.elements.date.value);
-        console.log(e.target.elements.mvpLink.value);
-        console.log(e.target.elements.summary.value);
-
         const page = await drupal.createResource<DrupalNode>("node--page", {
             data: {
                 attributes: {
