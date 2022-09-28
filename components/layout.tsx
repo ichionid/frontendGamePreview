@@ -9,20 +9,15 @@ export function Layout({ children }) {
       <div className="max-w-screen-md px-6 mx-auto">
         <header>
           <div className="container flex items-center justify-between py-6 mx-auto">
-            <Link href="/" passHref>
+            <Link href={`${process.env.NEXT_PUBLIC_DRUPAL_BASE_URL}`}>
               <a className="text-2xl font-semibold no-underline">
-                Next.js for Drupal
-              </a>
-            </Link>
-            <Link href="https://next-drupal.org/docs" passHref>
-              <a target="_blank" rel="external" className="hover:text-blue-600">
-                Read the docs
+                DTU basketball website
               </a>
             </Link>
           </div>
         </header>
         <main className="container py-10 mx-auto">{children}</main>
-      </div>
+      </div >
     </>
   )
 }

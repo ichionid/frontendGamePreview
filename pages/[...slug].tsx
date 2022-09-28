@@ -7,6 +7,7 @@ import { drupal } from "lib/drupal"
 import { NodeArticle } from "components/node--article"
 import { NodeBasicPage } from "components/node--basic-page"
 import { Layout } from "components/layout"
+import { NodeGameReview } from "components/node--game_review"
 
 const RESOURCE_TYPES = ["node--page", "node--article"]
 
@@ -16,7 +17,8 @@ interface NodePageProps {
 
 export default function NodePage({ resource }: NodePageProps) {
   if (!resource) return null
-
+  console.log("ehre")
+  console.log(resource)
   return (
     <Layout>
       <Head>
@@ -25,6 +27,7 @@ export default function NodePage({ resource }: NodePageProps) {
       </Head>
       {resource.type === "node--page" && <NodeBasicPage node={resource} />}
       {resource.type === "node--article" && <NodeArticle node={resource} />}
+      {resource.type === "node--game_review" && <NodeGameReview node={resource} />}
     </Layout>
   )
 }
@@ -50,9 +53,9 @@ export async function getStaticProps(
   const type = path.jsonapi.resourceName
 
   let params = {}
-  if (type === "node--article") {
+  if (type === "node--game_review") {
     params = {
-      include: "field_image,uid",
+      include: "uid",
     }
   }
 
