@@ -68,7 +68,7 @@ export class FormGameReview extends React.Component<IFormProps, IFormState> {
         if (this.validateForm()) {
             const submitSuccess: boolean = await this.submitForm(e);
             if (submitSuccess) {
-                Router.reload(window.location.pathname)
+                Router.reload()
             }
             this.setState({ submitSuccess });
         }
