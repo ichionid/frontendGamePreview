@@ -1,5 +1,5 @@
 import Head from "next/head"
-import { GetStaticPropsResult } from "next"
+import { GetServerSidePropsResult } from "next"
 import { DrupalNode } from "next-drupal"
 import NoSSR from 'react-no-ssr';
 
@@ -19,7 +19,6 @@ export default function IndexPage({ nodes }: IndexPageProps) {
  * input field keyword onchage
  */
   const [search, setSearch] = useState("");
-  // Does not work
   const filteredNodes = nodes.filter(
     node => {
       if (node.title.toLocaleLowerCase().includes(search)) {
@@ -68,9 +67,9 @@ export default function IndexPage({ nodes }: IndexPageProps) {
   )
 }
 
-export async function getStaticProps(
+export async function getServerSideProps(
   context
-): Promise<GetStaticPropsResult<IndexPageProps>> {
+): Promise<GetServerSidePropsResult<IndexPageProps>> {
   const nodes = await drupal.getResourceCollectionFromContext<DrupalNode[]>(
     "node--game_review",
     context,
